@@ -1,5 +1,4 @@
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
-import nltk
 # Load the T5 model and tokenizer
 model_name = "t5-small"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
