@@ -4,3 +4,4 @@ torch --index-url https://download.pytorch.org/whl/cu124
 torchvision --index-url https://download.pytorch.org/whl/cu124
 torchaudio --index-url https://download.pytorch.org/whl/cu124
 transformers~=4.44.1
+streamlit
