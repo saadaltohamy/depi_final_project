@@ -84,7 +84,3 @@ This will build the Docker image and run it, making the app accessible via `loca
 - Esraa Rabea
 - Reem Gamal
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
