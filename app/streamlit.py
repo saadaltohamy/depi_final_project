@@ -1,7 +1,7 @@
 import streamlit as st
 from model_function import summarize_text  # Import your summarization function
 
-st.title("Summarization App")
+st.title("Bart Summarization App")
 
 # Create a text input for users
 input_text = st.text_area("Enter text to summarize:")
