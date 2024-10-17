@@ -1,9 +1,8 @@
 import streamlit as st
 from model_function import summarize_text  # Import your summarization function
 
-st.title("Bart Summarization App")
+st.title("Summarization App")
 
-# Create a text input for users
 input_text = st.text_area("Enter text to summarize:")
 
 # Define the character limit for the preview
@@ -16,16 +15,14 @@ if st.button("Summarize"):
         
         # Display a preview if the summary is long
         if len(summary) > PREVIEW_LIMIT:
-            # Show preview text with a "Read more" option
             st.write("Summary (Preview):")
             st.write(summary[:PREVIEW_LIMIT] + "...")
             
-            # Add a button to display full text
-            if st.button("Read more"):
-                st.write("Full Summary:")
+            # Use an expander for the full summary text
+            with st.expander("Read more"):
                 st.write(summary)
         else:
-            # Display the full summary if it's within the limit
+            # Display the full summary if it's short
             st.write("Summary:")
             st.write(summary)
     else:
