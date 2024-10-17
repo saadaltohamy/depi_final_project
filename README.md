@@ -75,9 +75,14 @@ docker run -p 8501:8501 summarization-app
 
 This will build the Docker image and run it, making the app accessible via `localhost:8501` if using Streamlit.
 
-## Contributing
+## Team Members
 
-Contributions to this project are welcome. Please fork the repository and submit a pull request with your changes.
+- Saad Al-Tohamy
+- Ahmed Shetia
+- Sayed Gamal
+- Mohamed Ayman
+- Esraa Rabea
+- Reem Gamal
 
 ## License
 
