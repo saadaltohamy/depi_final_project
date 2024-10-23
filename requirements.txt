@@ -5,3 +5,5 @@ torchaudio --index-url https://download.pytorch.org/whl/cu124
 transformers~=4.44.1
 streamlit
 nltk
+python-telegram-bot~=20.3
+requests
