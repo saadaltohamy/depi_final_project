@@ -7,3 +7,5 @@ streamlit
 nltk
 python-telegram-bot~=20.3
 requests
+azure-ai-formrecognizer==3.2.0
+azure-core==1.28.0

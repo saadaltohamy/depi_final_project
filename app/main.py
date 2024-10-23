@@ -15,8 +15,8 @@ async def say_hello(name: str):
 
 
 @app.post("/summary")
-async def summary(text: str):
-    output = summarize_text(text)
+async def summary(chat: str):
+    output = summarize_text(chat)
     return {"summary": output}
 
 if __name__ == "__main__":

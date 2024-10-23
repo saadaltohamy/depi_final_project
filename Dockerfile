@@ -15,8 +15,7 @@ COPY ./app /code/app
 # Environment variable to include your code in Python path
 ENV PYTHONPATH=/code/app
 
-# Expose ports for both Streamlit and FastAPI
-EXPOSE 8501 8000
+EXPOSE 8501
 
-# Run both Streamlit and FastAPI apps
-CMD ["sh", "-c", "uvicorn api:app --host 0.0.0.0 --port 8000 & streamlit run streamlit.py --server.port 8501"]
+# Command to run the app (replace 'app.py' with your app script)
+CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.headless=true"]
