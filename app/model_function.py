@@ -1,6 +1,10 @@
 from transformers import pipeline
+import os
 
-summarizer = pipeline("summarization", model="app/bart_model")
+if os.path.exists("app/bart_model"):
+    summarizer = pipeline("summarization", model="app/bart_model")
+else:
+    summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
 
 def summarize_text(sentence):
 
