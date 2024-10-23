@@ -1,6 +1,6 @@
 from transformers import pipeline
 
-summarizer = pipeline("summarization", model="bart_model")
+summarizer = pipeline("summarization", model="app/bart_model")
 
 def summarize_text(sentence):
 
