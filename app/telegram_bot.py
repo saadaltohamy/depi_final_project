@@ -1,9 +1,10 @@
 import requests
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+import os
 
 # Replace this with your bot token
-TELEGRAM_API_TOKEN = 'YOUR_BOT_API_TOKEN'
+TELEGRAM_API_TOKEN = os.getenv("API_KEY")
 
 # FastAPI URL for summarization
 API_URL = 'http://localhost:8000/summarize'  # Replace with your Docker container's FastAPI URL
