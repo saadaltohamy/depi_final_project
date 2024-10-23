@@ -12,8 +12,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the current directory contents into the container at /code
 COPY ./app /code/app
 
+# Environment variable to include your code in Python path
 ENV PYTHONPATH=/code/app
 
-# Run app.py when the container launches
-EXPOSE 8000
-CMD ["uvicorn", "app.main:app", "--host","0.0.0.0","--port","8000"]
+# Expose ports for both Streamlit and FastAPI
+EXPOSE 8501 8000
+
+# Run both Streamlit and FastAPI apps
+CMD ["sh", "-c", "uvicorn api:app --host 0.0.0.0 --port 8000 & streamlit run streamlit.py --server.port 8501"]
