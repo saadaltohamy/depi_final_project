@@ -1,8 +1,8 @@
 import streamlit as st
-from model_function import summarize_text  # Import your summarization function
+from model_function import summarize_text
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.formrecognizer import DocumentAnalysisClient
-
+import gc
 endpoint = "https://ocr-grad.cognitiveservices.azure.com/"
 key = "8b11f3e44f464ab9a4ef07f3f03e6d0e"
 
@@ -19,44 +19,40 @@ uploaded_files = st.file_uploader(
     type=["pdf", "jpg", "jpeg", "png"]
 )
 
-# Initialize an empty string to store the combined text
 combined_text = input_text + "\n"
 
 if st.button("Summarize"):
-    # Limit the number of files to 10
     uploaded_files = uploaded_files[:10]
 
-    # Iterate over each uploaded file
     for uploaded_file in uploaded_files:
         if uploaded_file is not None:
-            # Display the file name
             st.markdown(f"<span style='color:yellow'>Processing file: {uploaded_file.name}</span>", unsafe_allow_html=True)
-            # st.write(f"Processing file: {uploaded_file.name}")
 
             try:
-                # Reset the file pointer to the beginning
                 uploaded_file.seek(0)
 
-                # Use the 'prebuilt-read' model to extract text
                 poller = document_analysis_client.begin_analyze_document(
                     "prebuilt-read", document=uploaded_file
                 )
                 result = poller.result()
 
-                # Extract text and append to combined_text
                 for page in result.pages:
                     for line in page.lines:
                         combined_text += line.content + "\n"
-                # st.write("Successed")
                 st.markdown("<span style='color:green'>Successed</span>", unsafe_allow_html=True)
 
             except Exception as e:
                 st.error(f"Error processing file {uploaded_file.name}: {str(e)}")
-    # Display the combined text
+    
     st.markdown(f"<span style='color:yellow'>Summarizing...</span>", unsafe_allow_html=True)
     summary = summarize_text(combined_text)
     st.write("Summary of all files and text:")
     st.write(summary)
 
+    # Clear memory
+    del combined_text
+    del summary
+    del uploaded_files
+    gc.collect()
 else:
     st.write("Please upload at least one document or image.")
