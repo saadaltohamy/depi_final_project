@@ -60,7 +60,7 @@ To set up this project locally, follow these steps:
 
 To use the app, you can either navigate to the local URL provided by Streamlit or FastAPI after running it locally, or you can access it directly through the cloud deployment:
 
-- **Cloud Deployment**: [Text Summarization App](https://depi-summarization.streamlit.app/)
+- **Cloud Deployment**: [Text Summarization App](https://summabot.azurewebsites.net)
 
 Enter the text you want to summarize in the input box and click the `Summarize` button. The summary will appear shortly.
 
